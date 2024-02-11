@@ -9,13 +9,14 @@ interface IProduct {
 interface IProductState {
     data: IProduct[],
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
-    error: string | null
+    error: string | null | any
 };
+
 
 export const fetchProduct = createAsyncThunk<IProduct[]>(
     'data/fetchData',
     async () => {
-        const response = await fetch('https://dummyjson.com/products/');
+        const response = await fetch('https://dummyjson.com/products/dfg');
         const data = await response.json();
         if (!response.ok) {
             throw new Error('Error data fetch');
@@ -46,7 +47,7 @@ const productSlice = createSlice({
             })
             .addCase(fetchProduct.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.payload.message
+                state.error = action.error.message;
                 state.data = [];
             })
     },
