@@ -4,6 +4,15 @@ export type TProduct = {
     name: string,
     id: number,
     title: string,
+    thumbnail: string,
+    category: string,
+    brand: string,
+    images:string[],
+    description: string,
+    discountPercentage: number,
+    price:number,
+    rating: number,
+    stock: number
 }
 
 type TInitialProduct = {

@@ -22,8 +22,13 @@ const App: FC = () => {
    <main>
        <h1>Home</h1>
        <ul>
-         {data.map((item, index) =>
-          <li key={index}>{item.title}</li>
+        {data.map((item) => 
+         <li key={item.id}>{item.category}</li>
+        )}
+       </ul>
+       <ul>
+         {data.map((item) =>
+          <li key={item.id}>{item.title} {<img  src={item.thumbnail}/>}</li>
           )}
        </ul>
    </main>
