@@ -1,31 +1,30 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-interface IProduct {
-    id: number;
-    name: string;
-    title: string
-};
+type TProduct = {
+    name: string,
+    id: number,
+    title: string,
+}
 
-interface IProductState {
-    data: IProduct[],
-    status: 'idle' | 'loading' | 'succeeded' | 'failed';
+type TInitialProduct = {
+    data: TProduct[],
+    status: 'idle' | 'loading' | 'succeeded' | 'faild',
     error: string | null
-};
+}
 
-
-export const fetchProduct = createAsyncThunk<IProduct[]>(
-    'data/fetchData',
+export const fetchProducts = createAsyncThunk<TProduct[]>(
+    'data/productData',
     async () => {
-        const response = await fetch('https://dummyjson.com/products/');
-        const data = await response.json();
-        if (!response.ok) {
-            throw new Error('Error data fetch');
+        const rest = await fetch('https://dummyjson.com/products/');
+        const data = await rest.json();
+        if (!rest.ok) {
+            throw new Error('Error fetch data')
         }
-        return data.products as IProduct[]
+        return data.products as TProduct[]
     }
 );
 
-const initialState: IProductState = {
+const initialState: TInitialProduct = {
     data: [],
     status: 'idle',
     error: null
@@ -37,20 +36,20 @@ const productSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProduct.pending, (state) => {
+            .addCase(fetchProducts.pending, (state) => {
                 state.status = 'loading'
             })
-            .addCase(fetchProduct.fulfilled, (state, action: PayloadAction<IProduct[]>) => {
-                state.status = 'succeeded';
+            .addCase(fetchProducts.fulfilled, (state, action) => {
                 state.data = action.payload
-                state.error = null;
+                state.status = 'succeeded',
+                    state.error = null
             })
-            .addCase(fetchProduct.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message ?? null
-                state.data = [];
+            .addCase(fetchProducts.rejected, (state, action) => {
+                state.data = [],
+                    state.status = 'faild',
+                    state.error = action.error.message ?? null
             })
-    },
-})
+    }
+});
 
 export default productSlice.reducer;

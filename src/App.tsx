@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProduct } from "./store/productSlice";
+import { fetchProducts } from "./store/productSlice";
 import { AppDispatch, RootState } from "./store/store";
 
 
@@ -15,12 +15,17 @@ const App: FC = () => {
   console.log('data:', data)
 
   useEffect(() => {
-    dispatch(fetchProduct())
+    dispatch(fetchProducts())
   },[])
 
   return (
    <main>
        <h1>Home</h1>
+       <ul>
+         {data.map((item, index) =>
+          <li key={index}>{item.title}</li>
+          )}
+       </ul>
    </main>
   )
 }
