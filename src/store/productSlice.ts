@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-type TProduct = {
+export type TProduct = {
     name: string,
     id: number,
     title: string,
@@ -15,7 +15,7 @@ type TInitialProduct = {
 export const fetchProducts = createAsyncThunk<TProduct[]>(
     'data/productData',
     async () => {
-        const rest = await fetch('https://dummyjson.com/products/');
+        const rest = await fetch('https://dummyjson.com/products/?limit=50');
         const data = await rest.json();
         if (!rest.ok) {
             throw new Error('Error fetch data')

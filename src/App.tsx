@@ -2,13 +2,13 @@ import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./store/productSlice";
 import { AppDispatch, RootState } from "./store/store";
-
+import { TProduct } from "./store/productSlice";
 
 const App: FC = () => {
   const dispatch: AppDispatch = useDispatch<AppDispatch>()
   const status = useSelector((state: RootState) => state.products.status);
   const error = useSelector((state: RootState) => state.products.error);
-  const data = useSelector((state: RootState) => state.products.data);
+  const data: TProduct[] = useSelector((state: RootState) => state.products.data);
   
   console.log('status:', status)
   console.log('error:', error)
