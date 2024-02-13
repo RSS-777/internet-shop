@@ -7,10 +7,10 @@ export type TProduct = {
     thumbnail: string,
     category: string,
     brand: string,
-    images:string[],
+    images: string[],
     description: string,
     discountPercentage: number,
-    price:number,
+    price: number,
     rating: number,
     stock: number
 }
@@ -18,7 +18,8 @@ export type TProduct = {
 type TInitialProduct = {
     data: TProduct[],
     status: 'idle' | 'loading' | 'succeeded' | 'faild',
-    error: string | null
+    error: string | null,
+    category: string
 }
 
 export const fetchProducts = createAsyncThunk<TProduct[]>(
@@ -36,13 +37,18 @@ export const fetchProducts = createAsyncThunk<TProduct[]>(
 const initialState: TInitialProduct = {
     data: [],
     status: 'idle',
-    error: null
+    error: null,
+    category: ''
 }
 
 const productSlice = createSlice({
     name: 'products',
     initialState,
-    reducers: {},
+    reducers: {
+        getCategory: (state, action) => {
+           state.category = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProducts.pending, (state) => {
@@ -62,3 +68,4 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
+export const{ getCategory } = productSlice.actions

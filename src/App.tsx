@@ -1,37 +1,30 @@
 import { FC, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchProducts } from "./store/productSlice";
-import { AppDispatch, RootState } from "./store/store";
-import { TProduct } from "./store/productSlice";
+import { TypeAppDispatch } from "./store/store";
+import { Routes, Route } from "react-router-dom";
+import { StyleMain } from "./AppStyles";
+import Navigation from "./components/Navigation/Navigation";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home/Home";
+import Smartphones from './pages/Smartphones/Smartphones';
 
 const App: FC = () => {
-  const dispatch: AppDispatch = useDispatch<AppDispatch>()
-  const status = useSelector((state: RootState) => state.products.status);
-  const error = useSelector((state: RootState) => state.products.error);
-  const data: TProduct[] = useSelector((state: RootState) => state.products.data);
-  
-  console.log('status:', status)
-  console.log('error:', error)
-  console.log('data:', data)
+  const dispatch: TypeAppDispatch = useDispatch<TypeAppDispatch>()
 
   useEffect(() => {
     dispatch(fetchProducts())
-  },[])
+  }, [])
 
   return (
-   <main>
-       <h1>Home</h1>
-       <ul>
-        {data.map((item) => 
-         <li key={item.id}>{item.category}</li>
-        )}
-       </ul>
-       <ul>
-         {data.map((item) =>
-          <li key={item.id}>{item.title} {<img  src={item.thumbnail}/>}</li>
-          )}
-       </ul>
-   </main>
+    <StyleMain>
+      <Header />
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/smartphones" element={<Smartphones />} />
+      </Routes>
+    </StyleMain>
   )
 }
 
