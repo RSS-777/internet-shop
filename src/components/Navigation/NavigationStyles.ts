@@ -22,7 +22,7 @@ export const StyleLi = styled.li`
    padding: 10px 0;
 
    &:hover {
-    background-color: green;
+    border: 2px solid tomato;
    }
 `;
 

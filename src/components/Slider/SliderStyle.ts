@@ -3,15 +3,20 @@ import styled from "styled-components";
 export const StyleDiv = styled.div`
   display: flex;
   justify-content: center; 
-  align-items: center;
   width: 33.33%;
-  height: 300px; /* Збільшено висоту */
+  height: 300px; 
+  @media (max-width: 768px){
+    height: 200px; 
+  }
+
+  @media (max-width: 480px){
+    height: 100px; 
+  }
 `;
 
 export const StyleImg = styled.img`
-  width: auto; 
-  height: auto; 
-  max-width: 100%;
-  max-height: 100%; 
-  object-fit: cover;
+height: 100%;
+max-width: 100%;
+max-height: 100%; 
+object-fit: cover;
 `;

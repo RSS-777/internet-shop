@@ -18,7 +18,7 @@ const SimpleSlider = () => {
 
   console.log(arrImages)
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -33,7 +33,7 @@ const SimpleSlider = () => {
             <StyleImg src={arrImages[45]} alt="image product"/>
           </StyleDiv>
           <StyleDiv>
-            <StyleImg src={arrImages[30]} alt="image product"/>
+            <StyleImg src={arrImages[32]} alt="image product"/>
           </StyleDiv>
           <StyleDiv>
             <StyleImg src={arrImages[50]} alt="image product"/>
