@@ -34,3 +34,15 @@ margin-left: 10px;
     background-color: #FDF000;
   }
 `;
+
+export const StyleButtonTheme = styled.button <{$theme: string }>`
+  background-color: ${props => props.$theme === 'light' ? 'white' : 'black'};
+  font-size: 22px;
+  padding: 2px 5px;
+  border-radius: 15px;
+  margin-left: 10px;
+
+  &:hover {
+    background-color: yellow;
+  }
+`;
