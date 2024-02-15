@@ -1,10 +1,18 @@
-import styled from "styled-components";
+import styled, { keyframes} from "styled-components";
 
 export const StyleUl = styled.ul`
   display: flex;
-  background-color: #FFFFAD;
-  margin: 0;
-  padding: 0;
+  gap: 5px;
+  margin-top: 30px;
+`;
+
+const animation = keyframes`
+0% {
+   transform: rotateY(90deg);
+}
+100% {
+  transform: rotateY(0deg);
+}
 `;
 
 export const StyleLi = styled.li`
@@ -13,20 +21,25 @@ export const StyleLi = styled.li`
    justify-content: space-between;
    align-items: center;
    flex: 1;
-   height: 100px;
+   height: 120px;
    text-align: center;
-   border: 2px solid #FDF6D3;
+   border: 2px solid #A1ACDC;
    cursor: pointer;
    list-style: none;
    user-select: none;
    padding: 10px 0;
+   animation: ${animation} 1.5s ease;
+   box-shadow: 1px 1px 6px 0 black;
 
    &:hover {
-    border: 2px solid tomato;
+    transform: rotateY(-25deg) rotateX(2deg);
+    border: 2px solid #7284D1;
+    box-shadow: 4px 3px 6px 0 black;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
    }
 `;
 
 export const StyleImg = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
 `

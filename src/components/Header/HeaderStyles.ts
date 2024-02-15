@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyleHeaders = styled.header`
-  //  background-color: #A0ABDC;
   background-image: linear-gradient(#A0ABDC, #FFFFAD);
    padding: 10px;
 `;
@@ -57,19 +56,19 @@ export const StyleNav = styled.nav`
   height: 30px;
   margin-top: 10px;
   align-items: center;
-`
+`;
 
 export const StyleDivList = styled.div`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   height: 30px;
-`
+`;
 
 export const StyleUl = styled.ul`
   display: flex;
   list-style: none;
-`
+`;
 
 export const StyleLink = styled.li`
   box-shadow: 2px 2px 6px 1px black;
@@ -85,4 +84,4 @@ export const StyleLink = styled.li`
     box-shadow: 1px 1px 3px 0 black;
     border: 1px solid tomato;
   }
-`
+`;

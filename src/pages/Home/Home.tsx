@@ -1,15 +1,12 @@
 import { FC } from "react";
-import { StyleDiv } from "./HomeStyle";
 import SimpleSlider from "../../components/Slider/Slider";
+import ContainerProducts from "../../components/ContainerProducts/ContainerProducts";
 
 const Home: FC = () => {
     return (
-        <div>
-            <h2>Top products</h2>
-            <StyleDiv>
-                <SimpleSlider />
-            </StyleDiv>
-        </div>
+        <ContainerProducts h2="Top products">
+           <SimpleSlider />
+        </ContainerProducts>
     )
 }
 

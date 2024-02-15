@@ -16,7 +16,6 @@ const SimpleSlider = () => {
     setArrImages(images);
   }, [data]);
 
-  console.log(arrImages)
   const settings = {
     dots: false,
     infinite: true,
@@ -26,6 +25,7 @@ const SimpleSlider = () => {
     adaptiveHeight: true,
     autoplay: true,
     autoplaySpeed: 2000,
+    arrows: false,
   };
   return (
     <Slider {...settings}>

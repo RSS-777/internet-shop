@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from "react";
+import Navigation from "../Navigation/Navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { TypeRootState, TypeAppDispatch } from "../../store/store";
 import { changeTheme } from "../../store/themeSlice";
@@ -14,9 +15,7 @@ const Header: FC = () => {
     }, [themeValue])
 
     const handlerTheme = () => {
-        themeValue === 'light'
-            ? dispatch(changeTheme('dark'))
-            : dispatch(changeTheme('light'))
+           dispatch(changeTheme(themeValue === 'light' ? 'dark' : 'light'))
     }
 
     return (
@@ -36,6 +35,7 @@ const Header: FC = () => {
                     <StyleButtonTheme $theme={theme} onClick={handlerTheme}>{theme === 'light' ? '☼' : '☾'}</StyleButtonTheme>
                 </StyleDivList>
             </StyleNav>
+            <Navigation />
         </StyleHeaders>
     )
 }

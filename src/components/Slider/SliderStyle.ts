@@ -5,6 +5,7 @@ export const StyleDiv = styled.div`
   justify-content: center; 
   width: 33.33%;
   height: 300px; 
+  
   @media (max-width: 768px){
     height: 200px; 
   }
@@ -15,8 +16,8 @@ export const StyleDiv = styled.div`
 `;
 
 export const StyleImg = styled.img`
-height: 100%;
-max-width: 100%;
-max-height: 100%; 
-object-fit: cover;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%; 
+  object-fit: cover;
 `;
