@@ -3,7 +3,7 @@ import { StyleDiv, StyleContainer } from "./ContainerProductsStyle";
 
 interface IProps {
     h2: string,
-    children: ReactNode
+    children: ReactNode,
 };
 
 const ContainerProducts: FC<IProps> = ({h2, children}) => {
