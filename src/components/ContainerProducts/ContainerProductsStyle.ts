@@ -14,7 +14,12 @@ const animation = keyframes`
 `;
 
 export const StyleDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px;
+  background-image: linear-gradient( #FFFFAD, #A0ABDC);
   box-shadow: 2px 2px 8px 1px black;
-  margin-top: 10px;
+  margin-top: 15px;
   animation: ${animation} 2s ease;
 `; 

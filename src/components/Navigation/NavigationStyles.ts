@@ -1,6 +1,7 @@
 import styled, { keyframes} from "styled-components";
+import { Link } from "react-router-dom";
 
-export const StyleUl = styled.ul`
+export const StyleList = styled.div`
   display: flex;
   gap: 5px;
   margin-top: 30px;
@@ -15,19 +16,19 @@ const animation = keyframes`
 }
 `;
 
-export const StyleLi = styled.li`
+export const StyleLink = styled(Link)`
    display: flex;
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
    flex: 1;
    height: 120px;
-   text-align: center;
    border: 2px solid #A1ACDC;
    cursor: pointer;
-   list-style: none;
+   text-decoration: none;
+   color: blue;
    user-select: none;
-   padding: 10px 0;
+   padding: 10px 10px;
    animation: ${animation} 1.5s ease;
    box-shadow: 1px 1px 6px 0 black;
 

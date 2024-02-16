@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { FC, useEffect, useState } from "react";
-import { TypeAppDispatch, TypeRootState } from "../../store/store";
-import { TProduct, getCategory } from "../../store/productSlice";
-import { StyleUl, StyleLi, StyleImg } from "./NavigationStyles";
+import { TypeRootState } from "../../store/store";
+import { TProduct } from "../../store/productSlice";
+import { StyleList, StyleLink, StyleImg } from "./NavigationStyles";
+
 
 const Navigation: FC = () => {
     const [filterCategory, setFilterCategory] = useState<string[]>([])
-    const dispatch: TypeAppDispatch = useDispatch<TypeAppDispatch>();
     const data: TProduct[] = useSelector((state: TypeRootState) => state.products.data);
 
     useEffect(() => {
@@ -17,23 +17,19 @@ const Navigation: FC = () => {
         setFilterCategory(Array.from(setCategory))
     }, [data])
 
-    const handleGetCategory = (e: string): void => {
-        dispatch(getCategory(e))
-    }
-
     return (
         <nav>
-            <StyleUl>
+            <StyleList>
                 {filterCategory.map((item, index) => {
                     const srcImages = data.find((items) => items.category === item);
                     return (
-                        <StyleLi key={index} onClick={() => handleGetCategory(item)}>
+                        <StyleLink to={item} key={index}>
                             {item}
                             {srcImages && <StyleImg src={srcImages.thumbnail} />}
-                        </StyleLi>
+                        </StyleLink>
                     )
                 })}
-            </StyleUl>
+            </StyleList>
         </nav>
     )
 }
