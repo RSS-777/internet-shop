@@ -72,9 +72,11 @@ export const StyleUl = styled.ul`
 
 export const StyleLink = styled.li`
   box-shadow: 2px 2px 6px 1px black;
+  font-size: 14px;
   margin-left: 5px;
   border-radius: 8px;
   padding: 2px 5px;
+  height: 24px;
   color: blue;
   cursor: pointer;
   background-color: #A0ABDC;
@@ -84,4 +86,9 @@ export const StyleLink = styled.li`
     box-shadow: 1px 1px 3px 0 black;
     border: 1px solid tomato;
   }
+`;
+
+export const StyleIcons = styled.img`
+  width: 14px;
+  height: 14px;
 `;

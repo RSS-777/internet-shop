@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { TProduct } from "../../store/productSlice";
+import { StyelButton, StyelContainerDetails } from "./StyleDetailsProduct";
 
 interface IDetailsProduct {
     dataProps: TProduct | null;
@@ -8,10 +9,10 @@ interface IDetailsProduct {
 
 export const DetailsProduct: FC<IDetailsProduct> = ({dataProps, onClick}) => {
     return(
-        <div>
+        <StyelContainerDetails>
            <h3>{dataProps?.brand}</h3>
            <div>{dataProps?.images.map((item, i) => <img key={i} src={item} alt="Image product"/>)}</div> 
-           <button onClick={onClick}>List products</button>
-        </div>
+           <StyelButton onClick={onClick}>&#8592; Back</StyelButton>
+        </StyelContainerDetails>
     )
 }

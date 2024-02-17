@@ -1,21 +1,21 @@
 import styled, { keyframes } from "styled-components";
 
-export const StyleContainer = styled.div`
-  margin: 10px;
-`;
-
-const animation = keyframes`
-  from {
-    transform: scale(0, 0);
-  }
-  to {
-    transform: scale(1, 1);
-  }
-`;
-
 type TypeStyleProps = {
   $flex?: boolean
 }
+
+const animation = keyframes`
+from {
+  transform: scale(0, 0);
+}
+to {
+  transform: scale(1, 1);
+}
+`;
+
+export const StyleContainer = styled.div`
+  margin: 10px;
+`;
 
 export const StyleDiv = styled.div<TypeStyleProps>`
   ${(props) => props.$flex && `
@@ -30,25 +30,23 @@ export const StyleDiv = styled.div<TypeStyleProps>`
     animation: ${animation} 2s ease;
 `;
 
+export const StyleBlockElement = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 180px;
+    box-shadow: 1px 1px 6px 0 black;
+    border-radius: 15px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
 
-
-export const StyleDiv2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1 1 180px;
-  box-shadow: 1px 1px 6px 0 black;
-  border-radius: 15px;
-  text-align: center;
-  padding: 10px;
-  cursor: pointer;
-
-  &:hover {
-    transform: rotateY(-25deg) rotateX(2deg);
-    border: 2px solid #7284D1;
-    box-shadow: 4px 3px 6px 0 black;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-   }
+    &:hover {
+      transform: rotateY(-25deg) rotateX(2deg);
+      border: 2px solid #7284D1;
+      box-shadow: 4px 3px 6px 0 black;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
 `;
 
 export const StyleImg = styled.img`
@@ -64,4 +62,9 @@ export const StyleText = styled.div`
 
 export const StyleH4 = styled.h4`
    color: blue;
+`;
+
+export const StyleH2 = styled.h2`
+   color: blue;
+   text-shadow: 2px 2px 8px blue;
 `;
