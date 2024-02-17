@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { TProduct } from "../../store/productSlice";
 import { StyelButton, StyelContainerDetails, StyleFlex, StyleTextBlock } from "./StyleDetailsProduct";
+import frames from './../../assets/frames.png';
 
 interface IDetailsProduct {
     dataProps: TProduct | null;
@@ -10,7 +11,10 @@ interface IDetailsProduct {
 export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
     return (
         <StyelContainerDetails>
-            <h3>{dataProps?.brand}</h3>
+            <div>
+                <h3>{dataProps?.brand}</h3>
+                <img src={frames} alt="frames" />
+            </div>
             <StyleTextBlock>
                 <p>Title: <span>{dataProps?.title}</span></p>
                 <p>Price: <span>{dataProps?.price}$</span></p>

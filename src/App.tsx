@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { fetchProducts } from "./store/productSlice";
 import { TypeAppDispatch } from "./store/store";
 import { Routes, Route } from "react-router-dom";
-import { StyleMain } from "./AppStyles";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Smartphones from './pages/Smartphones/Smartphones';
@@ -25,7 +24,7 @@ const App: FC = () => {
   }, [])
 
   return (
-    <StyleMain>
+    <main>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -37,10 +36,10 @@ const App: FC = () => {
         <Route path="/skincare" element={<Skincare />} />
         <Route path="/smartphones" element={<Smartphones />} />
         <Route path="/tops" element={<Tops />} />
-        <Route path="/womens-shoes" element={<WomensShoes/>} />
+        <Route path="/womens-shoes" element={<WomensShoes />} />
         <Route path="/womens-dresses" element={<WomensDresses />} />
       </Routes>
-    </StyleMain>
+    </main>
   )
 }
 

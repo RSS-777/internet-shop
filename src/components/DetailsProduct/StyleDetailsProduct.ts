@@ -19,14 +19,34 @@ to {
 `;
 
 export const StyelContainerDetails = styled.div`
-   position: relative;
+  position: relative;
+  
+  >div:first-child {
+    position: relative;
+    width: fit-content;
+    min-width: 100px;
+    height: 101px;
+    padding: 0 5px ;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    h3 {
+      text-align: center;
+      color: red;
+      font-size: 24px;
+      line-height: 100px; 
+    }
 
-   h3 {
-    text-align: center;
-    margin: 20px;
-    color: red;
-    font-size: 24px;
-   }
+    img {
+      position: absolute;
+      bottom: -35px;
+      left: 0;
+      height: 170px;
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+    }  
+  }
 `;
 
 export const StyleTextBlock = styled.div`

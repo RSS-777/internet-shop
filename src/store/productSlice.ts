@@ -19,6 +19,7 @@ type TInitialProduct = {
     data: TProduct[],
     status: 'idle' | 'loading' | 'succeeded' | 'faild',
     error: string | null,
+    product: string,
 }
 
 export const fetchProducts = createAsyncThunk<TProduct[]>(
@@ -37,12 +38,17 @@ const initialState: TInitialProduct = {
     data: [],
     status: 'idle',
     error: null,
+    product: '',
 }
 
 const productSlice = createSlice({
     name: 'products',
     initialState,
-    reducers: {},
+    reducers: {
+        setProduct: (state, action) => {
+          state.product = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProducts.pending, (state) => {
@@ -62,3 +68,4 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
+export const {setProduct} = productSlice.actions;

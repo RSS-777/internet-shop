@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { StyleDiv, StyleContainer, StyleBlockElement } from "./ContainerProductsStyle";
 import { useSelector } from "react-redux";
 import { TProduct } from "../../store/productSlice";
@@ -13,21 +13,24 @@ export interface IProps {
 };
 
 const ContainerProducts: FC<IProps> = ({ h2, children, product, $flex = false }) => {
-
     const data: TProduct[] = useSelector((state: TypeRootState) => state.products.data);
+    const getProduct: string = useSelector((state: TypeRootState) => state.products.product);
     const [detailsProduct, setDetailsProduct] = useState<TProduct | null>(null);
     const status: string = useSelector((state: TypeRootState) => state.products.status);
     const error: string | null = useSelector((state: TypeRootState) => state.products.error);
 
     const handleDetails = (item: TProduct) => {
         setDetailsProduct(item)
-        console.log("Smartphones", item)
     };
 
     const handleClear = () => {
         setDetailsProduct(null)
     };
-
+    
+    useEffect(() => {
+        data.filter(items => items.title === getProduct).map((item) =>handleDetails(item))
+    },[getProduct])
+    
     return (
         <StyleContainer>
             <h2>{h2}</h2>
