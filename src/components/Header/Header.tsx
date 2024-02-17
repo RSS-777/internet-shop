@@ -3,7 +3,7 @@ import Navigation from "../Navigation/Navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { TypeRootState, TypeAppDispatch } from "../../store/store";
 import { changeTheme } from "../../store/themeSlice";
-import { StyleButton, StyleH1, StyleHeaders, StyleInput, StyleSearch, StyleButtonTheme, StyleNav, StyleUl, StyleLink, StyleDivList, StyleIcons } from "./HeaderStyles";
+import { StyleHeaders, StyleSearch, StyleButtonTheme, StyleNav, StyleDivList, } from "./HeaderStyles";
 import imgLogin from './../../assets/key.png'
 import imgUser from './../../assets/user.png'
 import imgBuy from './../../assets/buy.png'
@@ -18,23 +18,23 @@ const Header: FC = () => {
     }, [themeValue])
 
     const handlerTheme = () => {
-           dispatch(changeTheme(themeValue === 'light' ? 'dark' : 'light'))
+        dispatch(changeTheme(themeValue === 'light' ? 'dark' : 'light'))
     }
 
     return (
         <StyleHeaders>
-            <StyleH1>Online Store</StyleH1>
+            <h1>Online Store</h1>
             <StyleNav>
                 <StyleSearch>
-                    <StyleInput />
-                    <StyleButton>search</StyleButton>
+                    <input />
+                    <button>search</button>
                 </StyleSearch>
                 <StyleDivList>
-                    <StyleUl>
-                        <StyleLink>Login <StyleIcons src={imgLogin} alt="icon login" /></StyleLink>
-                        <StyleLink>User <StyleIcons src={imgUser} alt="icon user" /></StyleLink>
-                        <StyleLink>Basket <StyleIcons src={imgBuy} alt="icon basket" /></StyleLink>
-                    </StyleUl>
+                    <ul>
+                        <li>Login <img src={imgLogin} alt="icon login" /></li>
+                        <li>User <img src={imgUser} alt="icon user" /></li>
+                        <li>Basket <img src={imgBuy} alt="icon basket" /></li>
+                    </ul>
                     <StyleButtonTheme $theme={theme} onClick={handlerTheme}>{theme === 'light' ? '☼' : '☾'}</StyleButtonTheme>
                 </StyleDivList>
             </StyleNav>

@@ -1,5 +1,5 @@
 import { FC, ReactNode, useState } from "react";
-import { StyleDiv, StyleContainer, StyleBlockElement, StyleImg, StyleText, StyleH2, StyleH4 } from "./ContainerProductsStyle";
+import { StyleDiv, StyleContainer, StyleBlockElement } from "./ContainerProductsStyle";
 import { useSelector } from "react-redux";
 import { TProduct } from "../../store/productSlice";
 import { TypeRootState } from "../../store/store";
@@ -30,26 +30,25 @@ const ContainerProducts: FC<IProps> = ({ h2, children, product, $flex = false })
 
     return (
         <StyleContainer>
-            <StyleH2>{h2}</StyleH2>
+            <h2>{h2}</h2>
             <StyleDiv $flex={$flex} >
                 {status === 'loading' && <p>'loading'</p>}
 
                 {status === 'succeeded' && (detailsProduct === null)
                     ? (children || data.filter(items => items.category === product).map((item) => (
                         <StyleBlockElement key={item.id} onClick={() => handleDetails(item)}>
-                            <StyleH4>{item.brand}</StyleH4>
-                            <StyleImg src={item.thumbnail} alt="imege product" />
-                            <StyleText>
+                            <h4>{item.brand}</h4>
+                            <img src={item.thumbnail} alt="imege product" />
+                            <div>
                                 <span>Price:{item.price}$</span>
                                 <span>Discount:{item.discountPercentage}$</span>
-                            </StyleText>
+                            </div>
                         </StyleBlockElement>
                     )))
                     : (<DetailsProduct dataProps={detailsProduct} onClick={handleClear} />)
                 }
 
                 {status === 'faild' && <p>An error occurred while receiving data from the server! ({error})</p>}
-
             </StyleDiv>
         </StyleContainer>
     )

@@ -15,6 +15,11 @@ to {
 
 export const StyleContainer = styled.div`
   margin: 10px;
+
+  h2 {
+    color: blue;
+    text-shadow: 2px 2px 8px blue;
+  }
 `;
 
 export const StyleDiv = styled.div<TypeStyleProps>`
@@ -41,6 +46,23 @@ export const StyleBlockElement = styled.div`
     padding: 10px;
     cursor: pointer;
 
+    h4 {
+      color: blue;
+      margin-bottom: 10px;
+    }
+
+    img {
+      max-width: 100%;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    div {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+
     &:hover {
       transform: rotateY(-25deg) rotateX(2deg);
       border: 2px solid #7284D1;
@@ -49,22 +71,7 @@ export const StyleBlockElement = styled.div`
     }
 `;
 
-export const StyleImg = styled.img`
-   max-width: 100%;
-   width: 100%;
-   border-radius: 10px;
-`;
 
-export const StyleText = styled.div`
-   display: flex;
-   justify-content: space-around;
-`;
 
-export const StyleH4 = styled.h4`
-   color: blue;
-`;
 
-export const StyleH2 = styled.h2`
-   color: blue;
-   text-shadow: 2px 2px 8px blue;
-`;
+

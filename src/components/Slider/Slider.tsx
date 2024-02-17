@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { TypeRootState } from "../../store/store";
 import { TProduct } from "../../store/productSlice";
-import { StyleDiv, StyleImg } from "./SliderStyle";
+import { StyleDiv } from "./SliderStyle";
 
 const SimpleSlider = () => {
   const [arrImages, setArrImages] = useState<string[]>([]);
@@ -27,26 +27,27 @@ const SimpleSlider = () => {
     autoplaySpeed: 2000,
     arrows: false,
   };
+  
   return (
     <Slider {...settings}>
-          <StyleDiv>
-            <StyleImg src={arrImages[45]} alt="image product"/>
-          </StyleDiv>
-          <StyleDiv>
-            <StyleImg src={arrImages[32]} alt="image product"/>
-          </StyleDiv>
-          <StyleDiv>
-            <StyleImg src={arrImages[50]} alt="image product"/>
-          </StyleDiv>
-          <StyleDiv>
-            <StyleImg src={arrImages[90]} alt="image product"/>
-          </StyleDiv>
-          <StyleDiv>
-            <StyleImg src={arrImages[120]} alt="image product"/>
-          </StyleDiv>
-          <StyleDiv>
-            <StyleImg src={arrImages[172]} alt="image product"/>
-          </StyleDiv>
+      <StyleDiv>
+        <img src={arrImages[45]} alt="image product" />
+      </StyleDiv>
+      <StyleDiv>
+        <img src={arrImages[32]} alt="image product" />
+      </StyleDiv>
+      <StyleDiv>
+        <img src={arrImages[50]} alt="image product" />
+      </StyleDiv>
+      <StyleDiv>
+        <img src={arrImages[90]} alt="image product" />
+      </StyleDiv>
+      <StyleDiv>
+        <img src={arrImages[120]} alt="image product" />
+      </StyleDiv>
+      <StyleDiv>
+        <img src={arrImages[172]} alt="image product" />
+      </StyleDiv>
     </Slider>
   );
 }

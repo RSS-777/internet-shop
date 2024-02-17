@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { FC, useEffect, useState } from "react";
 import { TypeRootState } from "../../store/store";
 import { TProduct } from "../../store/productSlice";
-import { StyleList, StyleLink, StyleImg } from "./NavigationStyles";
+import { StyleList, StyleLink } from "./NavigationStyles";
 
 
 const Navigation: FC = () => {
@@ -25,7 +25,7 @@ const Navigation: FC = () => {
                     return (
                         <StyleLink to={item} key={index}>
                             {item}
-                            {srcImages && <StyleImg src={srcImages.thumbnail} />}
+                            {srcImages && <img src={srcImages.thumbnail} />}
                         </StyleLink>
                     )
                 })}

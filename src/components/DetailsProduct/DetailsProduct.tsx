@@ -1,16 +1,16 @@
 import { FC } from "react";
 import { TProduct } from "../../store/productSlice";
-import { StyelButton, StyelContainerDetails, StyleBlockImages, StyleFlex, StyleTextBlock } from "./StyleDetailsProduct";
+import { StyelButton, StyelContainerDetails, StyleFlex, StyleTextBlock } from "./StyleDetailsProduct";
 
 interface IDetailsProduct {
     dataProps: TProduct | null;
     onClick: () => void;
-}
+};
 
 export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
     return (
         <StyelContainerDetails>
-            <h2>{dataProps?.brand}</h2>
+            <h3>{dataProps?.brand}</h3>
             <StyleTextBlock>
                 <p>Title: <span>{dataProps?.title}</span></p>
                 <p>Price: <span>{dataProps?.price}$</span></p>
@@ -21,12 +21,12 @@ export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
             </StyleTextBlock>
             <StyleFlex>
                 {dataProps?.images.map((item, i) =>
-                    <StyleBlockImages>
+                    <div>
                         <img key={i} src={item} alt="Image product" />
-                    </StyleBlockImages>
+                    </div>
                 )}
             </StyleFlex>
             <StyelButton onClick={onClick}>&#8592; Back</StyelButton>
         </StyelContainerDetails>
     )
-}
+};

@@ -1,12 +1,6 @@
 import styled, { keyframes} from "styled-components";
 import { Link } from "react-router-dom";
 
-export const StyleList = styled.div`
-  display: flex;
-  gap: 5px;
-  margin-top: 30px;
-`;
-
 const animation = keyframes`
 0% {
    transform: rotateY(90deg);
@@ -14,6 +8,12 @@ const animation = keyframes`
 100% {
   transform: rotateY(0deg);
 }
+`;
+
+export const StyleList = styled.div`
+  display: flex;
+  gap: 5px;
+  margin-top: 30px;
 `;
 
 export const StyleLink = styled(Link)`
@@ -32,6 +32,11 @@ export const StyleLink = styled(Link)`
    animation: ${animation} 1.5s ease;
    box-shadow: 1px 1px 6px 0 black;
 
+   img {
+    width: 50px;
+    height: 50px;
+   }
+
    &:hover {
     transform: rotateY(-25deg) rotateX(2deg);
     border: 2px solid #7284D1;
@@ -39,8 +44,3 @@ export const StyleLink = styled(Link)`
     transition: transform 0.5s ease, box-shadow 0.5s ease;
    }
 `;
-
-export const StyleImg = styled.img`
-  width: 50px;
-  height: 50px;
-`
