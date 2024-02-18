@@ -64,6 +64,32 @@ export const StyleTextBlock = styled.div`
      margin-left: 5px;
      font-family: cursive;
     };
+
+    >button {
+      margin-top: 5px;
+      padding: 2px 5px;
+      border-radius: 6px;
+      color: blue;
+      cursor: pointer;
+      border: 1px solid blue;
+      background-color: #A0ABDC;
+      box-shadow: 2px 2px 6px 1px black;
+   
+      &:active {
+      background-color: #FFFFAD;
+       border: 1px solid blue;
+      }
+
+      &:hover {
+       box-shadow: 1px 1px 3px 0 black;
+       border: 1px solid tomato;
+      }
+
+      img {
+        width: 14px;
+        height: 14px;
+      }
+    }
 `;
 
 export const StyleFlex = styled.div`
@@ -99,11 +125,17 @@ export const StyelButton = styled.button`
    border: 1px solid blue;
    background-color: #A0ABDC;
    box-shadow: 2px 2px 6px 1px black;
-
+   
+   &:active {
+    background-color: #FFFFAD;
+     border: 1px solid blue;
+   }
+   
    &:hover {
     box-shadow: 1px 1px 3px 0 black;
     border: 1px solid tomato;
-  }
+   }
+
 `;
 
 

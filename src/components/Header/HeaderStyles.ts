@@ -41,6 +41,11 @@ export const StyleSearch = styled.div`
     box-shadow: 2px 2px 6px 1px black;
     border: 1px solid black;
   
+    &:active {
+      background-color: #FFFFAD;
+       border: 1px solid blue;
+    }
+
     &:hover {
       box-shadow: 1px 1px 3px 0 black;
       border: 1px solid tomato;
@@ -49,6 +54,7 @@ export const StyleSearch = styled.div`
 `;
 
 export const StyleDivList = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -69,17 +75,37 @@ export const StyleDivList = styled.div`
       cursor: pointer;
       background-color: #A0ABDC;
       border: 1px solid blue;
+      user-select: none;
 
       img {
         width: 14px;
         height: 14px;
       }
+
+      &:active {
+        background-color: #FFFFAD;
+         border: 1px solid blue;
+        }
     
       &:hover {
         box-shadow: 1px 1px 3px 0 black;
         border: 1px solid tomato;
       }
     }
+  }
+
+  span {
+    position: absolute;
+    top: 20px;
+    right: 63px;
+    line-height: 14px;
+    text-align: center;
+    font-size: 8px;
+    width:14px;
+    height: 14px;
+    border: 1px solid red;
+    border-radius: 50%;
+    background-color: white;
   }
 `;
 
@@ -95,7 +121,7 @@ export const StyleButtonTheme = styled.button<{ $theme: string }>`
   color: red;
   line-height: 18px;
   box-shadow: 2px 2px 6px 1px black;
-
+  
   &:hover {
     box-shadow: 1px 1px 3px 0 black;
     border: 1px solid tomato;
