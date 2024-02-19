@@ -45,7 +45,7 @@ const Header: FC = () => {
             }
             setClickedButton(false)
         }
-        
+
         document.body.addEventListener('click', handleClickOutside)
         return () => {
             document.body.removeEventListener('click', handleClickOutside)
@@ -72,7 +72,14 @@ const Header: FC = () => {
                         <li onClick={handleOpenBasket}>Basket <img src={imgBuy} alt="icon basket" /></li>
                     </ul>
                     <StyleButtonTheme $theme={theme} onClick={handlerTheme}>{theme === 'light' ? '☼' : '☾'}</StyleButtonTheme>
-                    {basketProducts.length !== 0 && <span>{basketProducts.length}</span>}
+                    {basketProducts.length !== 0 &&
+                        <span>
+                            {basketProducts.reduce((acc, item) => {
+                                acc += item.count
+                                return acc
+                            }, 0)}
+                        </span>
+                    }
                 </StyleDivList>
             </StyleNav>
             <Basket ref={basketContainerRef} propsDisable={valueDisable} />

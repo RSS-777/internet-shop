@@ -5,14 +5,16 @@ export const StyleContainer = styled.div<{$disable: boolean}>`
   z-index: 999;
   overflow-y: auto;
   top: 100px;
-  right:${props => props.$disable ? '0':'-350px'};
-  min-height: 85vh;
+  right:${props => props.$disable ? '0': '-350px'};
+  max-height: 85vh;
   width: 320px;
   padding: 10px;
   border: 2px solid blue;
+  border-radius: 10px 0 0 10px;
   box-shadow: 0 0 22px 0 black;
   background-color: #FDF6D3;
   transition: right 1s ease-out;
+  user-select: none;
 
   h3 {
     text-align: center;
@@ -23,31 +25,71 @@ export const StyleContainer = styled.div<{$disable: boolean}>`
    
     >div {
       position: relative;
-      border: 2px solid yellow;
-      border-radius: 10px;
-      box-shadow: 2px 2px 8px 0 black;
       margin-top: 5px;
 
       h4 {
-         color: tomato;
+         color: #73051E;
          text-align: center;
          margin: 5px;
       }
 
       span:nth-child(2) {
-        color: blue; 
         margin: 5px;
-      }
-
-      span:nth-child(4) {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 0;
       }
 
       img {
         width: 50px;
+      }
+
+      span:nth-child(4) {
+        position: absolute;
+        right: 10px;
+        bottom: 2px;
+        color: red;
+      }
+
+      div {
+        position: absolute;
+        left: 50%;
+        bottom: 4px;
+        transform: translateX(-50%);
+        height: 22px;
+        display: flex;
+        align-items: center;
+        
+        span {
+          text-align: center;
+          color: blue;
+          border: 2px solid black;
+          width: 30px;
+          height:20px;
+          font-size: 16px;
+        }
+
+        button {
+          border-style: none;
+          background-color: transparent;
+          font-size: 18px;
+          cursor: pointer;
+          
+          &:hover {
+            color: red;
+          }
+        }
+      }
+      
+      >button {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        font-size: 18px;
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+
+        &:hover {
+          color: red;
+        }
       }
     }
   }
@@ -68,34 +110,24 @@ export const StyleContainer = styled.div<{$disable: boolean}>`
   }
 `;
 
-export const StyleButton = styled.button`
-position: absolute;
-right: 10px;
-bottom: 5px;
-box-shadow: 2px 2px 6px 1px black;
-font-size: 10px;
-border-radius: 8px;
-padding: 2px 5px;
-color: blue;
-cursor: pointer;
-background-color: #A0ABDC;
-border: 1px solid blue;
-user-select: none;
+export const StyleButtonBuy = styled.button`
+  box-shadow: 2px 2px 6px 1px black;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 2px 5px;
+  color: ${props => props.disabled ? '#A1ACDC' : 'blue'}; 
+  cursor: pointer;
+  background-color: ${props => props.disabled ? '#CBCBCE' : '#A0ABDC'} ;
+  border: 1px solid blue;
+  pointer-events: ${props => props.disabled ? 'none' : 'auto'}
 
-&:active {
-  background-color: #FFFFAD;
-   border: 1px solid blue;
+  &:active {
+    background-color: #FFFFAD;
+    border: 1px solid blue;
+    }
+
+  &:hover {
+    box-shadow: 1px 1px 3px 0 black;
+    border: 1px solid tomato;
   }
-
-&:hover {
-  box-shadow: 1px 1px 3px 0 black;
-  border: 1px solid tomato;
-}
-`;
-
-export const StyleButtonBuy = styled(StyleButton)`
-  position: static;
-  margin-right: 11px;
-  width: 38px;
-  height: 16px;
 `;

@@ -15,6 +15,7 @@ interface IAddProduct {
     title: string;
     thumbnail: string;
     price: number;
+    count?: number;
 };
 
 export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
@@ -27,6 +28,7 @@ export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
                 title: dataProps.title,
                 thumbnail: dataProps.thumbnail,
                 price: dataProps.price,
+                count: 1,
             };
             dispatch(addBasket(productToBasket))
             setValueBoolean(true)

@@ -19,6 +19,7 @@ export type TypeAddBasket = {
     title: string,
     thumbnail: string,
     price: number,
+    count: number,
 };
 
 type TInitialProduct = {
@@ -54,14 +55,24 @@ const productSlice = createSlice({
     initialState,
     reducers: {
         setProduct: (state, action) => {
-          state.product = action.payload
+            state.product = action.payload
         },
         addBasket: (state, action) => {
-            state.basket?.push(action.payload) 
+            const existingProductIndex = state.basket.findIndex(product => product.title === action.payload.title);
+            if (existingProductIndex !== -1) {
+                state.basket[existingProductIndex].price += action.payload.price
+                state.basket[existingProductIndex].count += action.payload.count
+            } else {
+                state.basket.push(action.payload);
+            }
         },
         deleteProductFromBasket: (state, action) => {
             state.basket?.splice(action.payload, 1)
-        }
+        },
+        updateProductInBasket: (state, action) => {
+           const {index, updateProduct} = action.payload;
+           state.basket[index] = updateProduct
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -82,6 +93,7 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
-export const {setProduct} = productSlice.actions;
-export const {addBasket} = productSlice.actions;
-export const {deleteProductFromBasket} = productSlice.actions;
+export const { setProduct } = productSlice.actions;
+export const { addBasket } = productSlice.actions;
+export const { deleteProductFromBasket } = productSlice.actions;
+export const { updateProductInBasket } = productSlice.actions;
