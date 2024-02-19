@@ -9,7 +9,6 @@ export const StyleHeaders = styled.header`
     color: blue;
     font-size: 40px;
   }
-
 `;
 
 export const StyleNav = styled.nav`
