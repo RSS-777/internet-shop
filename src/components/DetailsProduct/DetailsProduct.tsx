@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { TProduct, addBasket } from "../../store/productSlice";
 import { useDispatch } from "react-redux";
 import { TypeAppDispatch } from "../../store/store";
-import { StyelButton, StyelContainerDetails, StyleFlex, StyleTextBlock } from "./DetailsProductStyle";
+import { StyelButton, StyelContainerDetails, StyleFlex, StyleTextBlock, StyleTextShowAdd } from "./DetailsProductStyle";
 import frames from './../../assets/frames.png';
 import imgBuy from './../../assets/buy.png';
 
@@ -19,6 +19,7 @@ interface IAddProduct {
 
 export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
     const dispatch: TypeAppDispatch = useDispatch();
+    const [valueBoolean, setValueBoolean] = useState<boolean>(false)
 
     const handleAddBasket = () => {
         if (dataProps) {
@@ -28,6 +29,8 @@ export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
                 price: dataProps.price,
             };
             dispatch(addBasket(productToBasket))
+            setValueBoolean(true)
+            setTimeout(() => {setValueBoolean(false)}, 2500)
         }
     };
 
@@ -54,6 +57,7 @@ export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
                 )}
             </StyleFlex>
             <StyelButton onClick={onClick}>&#8592; Back</StyelButton>
+            <StyleTextShowAdd $animationOnOf={valueBoolean}><span>The product has been added to the cart!</span> </StyleTextShowAdd>
         </StyelContainerDetails>
     )
 };

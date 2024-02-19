@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const animationText = keyframes`
 from {
@@ -18,9 +18,22 @@ to {
 }
 `;
 
+const animationOpacity = keyframes`
+0% {
+  opacity: 0;
+}
+50% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+}
+`;
+
 export const StyelContainerDetails = styled.div`
   position: relative;
-  
+  width: 100%;
+
   >div:first-child {
     position: relative;
     width: fit-content;
@@ -102,14 +115,12 @@ export const StyleFlex = styled.div`
 
   div {
     display: flex;
-    max-width: 800px;
     box-shadow: 2px 2px 12px 1px black;
     border-radius: 20px;
     overflow: hidden;
     
     img {
-      width: 100%;
-      max-width: 100%;
+      max-height: 400px;
     }
   }
 `;
@@ -135,7 +146,26 @@ export const StyelButton = styled.button`
     box-shadow: 1px 1px 3px 0 black;
     border: 1px solid tomato;
    }
-
 `;
 
+export const StyleTextShowAdd = styled.div<{ $animationOnOf: boolean }>`
+   display:${props => props.$animationOnOf ? "flex" : "none"} ;
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 100%;
+   height: 100%;
+   background-color: rgba(255, 255, 255, 0.9);
+   pointer-events: none;
+   animation: ${animationOpacity} 3s ease;
+
+   span {
+     font-size: 24px;
+     color: blue;
+     pointer-events: auto;
+   }
+ `;
 

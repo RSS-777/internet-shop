@@ -15,6 +15,7 @@ import Skincare from "./pages/Skincare/Skincare";
 import Tops from "./pages/Tops/Tops";
 import WomensDresses from "./pages/WomensDresses/WomensDresses";
 import WomensShoes from "./pages/Womens-shoes/WomensShoes";
+import { StyleMain} from './AppStyle'
 
 const App: FC = () => {
   const dispatch: TypeAppDispatch = useDispatch<TypeAppDispatch>()
@@ -24,7 +25,7 @@ const App: FC = () => {
   }, [])
 
   return (
-    <main>
+    <StyleMain>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -39,7 +40,7 @@ const App: FC = () => {
         <Route path="/womens-shoes" element={<WomensShoes />} />
         <Route path="/womens-dresses" element={<WomensDresses />} />
       </Routes>
-    </main>
+    </StyleMain>
   )
 }
 
