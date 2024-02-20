@@ -7,6 +7,7 @@ export const StyleDiv = styled.div`
   height: 300px;
   
   img {
+    margin: auto;
     height: 100%;
     max-width: 100%;
     max-height: 100%; 

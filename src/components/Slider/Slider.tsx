@@ -26,6 +26,8 @@ const SimpleSlider = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     arrows: false,
+    draggable: false,
+    pauseOnHover: false 
   };
   
   return (
