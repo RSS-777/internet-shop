@@ -78,6 +78,11 @@ export const BlockSocialStyle = styled.div`
 
       img {
         width: 24px;
+
+        &:hover {
+          box-shadow: 0 0 5px 0 black;
+          border-radius: 50%;
+        }
       }
     }
    }

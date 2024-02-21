@@ -20,16 +20,16 @@ const Footer: FC = () => {
                 <BlockSocialStyle>
                     <p>We are in social networks:</p>
                     <div>
-                        <a href="https://facebook.com/example">
+                        <a href="https://facebook.com/example" target="_blank">
                             <img src={facebook} />
                         </a>
-                        <a href="https://twitter.com/example">
+                        <a href="https://twitter.com/example" target="_blank">
                             <img src={twiter} />
                         </a>
-                        <a href="https://instagram.com/example">
+                        <a href="https://instagram.com/example" target="_blank">
                             <img src={instagram} />
                         </a>
-                        <a href="https://t.me/your_telegram_channel_or_username">
+                        <a href="https://t.me/your_telegram_channel_or_username" target="_blank">
                             <img src={telegram} />
                         </a>
                     </div>

@@ -31,6 +31,7 @@ export const StyleLink = styled(Link)`
    padding: 10px 10px;
    animation: ${animation} 1.5s ease;
    box-shadow: 1px 1px 6px 0 black;
+   transition: transform 0.5s ease, box-shadow 0.5s ease;
 
    img {
     width: 50px;
@@ -41,6 +42,5 @@ export const StyleLink = styled(Link)`
     transform: rotateY(-25deg) rotateX(2deg);
     border: 2px solid #7284D1;
     box-shadow: 4px 3px 6px 0 black;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
    }
 `;
