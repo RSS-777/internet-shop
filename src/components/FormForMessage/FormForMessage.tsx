@@ -1,8 +1,13 @@
 import { FC, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import * as Yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from 'yup';
 import { StyleContainer, StyleSubmitMessage } from "./FormForMessageStyle";
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+
+const serviceId = import.meta.env.VITE_APP_SERVICE_ID
+const templateId = import.meta.env.VITE_APP_TEMPLATE_ID;
+const publicKey = import.meta.env.VITE_APP_PUBLIC_KEY;
 
 const schema = Yup.object().shape({
     name: Yup.string().required('Name is required').min(3, 'Name must be at least 3 characters'),
@@ -13,7 +18,7 @@ const schema = Yup.object().shape({
 type TypeFormData = {
     name: string,
     email: string,
-    message: string
+    message: string,
 };
 
 const FormForMessage: FC = () => {
@@ -22,18 +27,33 @@ const FormForMessage: FC = () => {
         resolver: yupResolver(schema)
     });
 
-    const onSubmit = (data: TypeFormData) => {
-        console.log(data)
-        reset()
-        setIsFormSubmitted(true)
-        console.log(isFormSubmitted);
+    const onSubmit = async (data: TypeFormData) => {
+        reset();
+        setIsFormSubmitted(true);
+
+        if (serviceId && templateId && publicKey) {
+            emailjs
+                .send(serviceId, templateId, data, {
+                    publicKey: publicKey,
+                })
+                .then(
+                    (response: EmailJSResponseStatus) => {
+                        console.log('Email sent successfully!', response.status);
+                    },
+                    (error) => {
+                        console.error('Failed to send email:', error);
+                    }
+                );
+        } else {
+            console.error('Missing serviceId, templateId, or publicKey');
+        }
     };
 
     useEffect(() => {
-        if(isFormSubmitted){
-            setTimeout(()=> {setIsFormSubmitted(false)}, 3000)
+        if (isFormSubmitted) {
+            setTimeout(() => { setIsFormSubmitted(false) }, 3000)
         }
-    },[isFormSubmitted]);
+    }, [isFormSubmitted]);
 
     return (
         <StyleContainer>
@@ -72,7 +92,7 @@ const FormForMessage: FC = () => {
                     {errors.message && <p>{errors.message.message}</p>}
                 </div>
                 <StyleSubmitMessage $submitted={isFormSubmitted} >
-                    {isFormSubmitted && <span>Ваша форма успішно відправлена</span>}
+                    <span>Form sent successfully</span>
                 </StyleSubmitMessage>
                 <button className={!isValid ? 'disabled' : 'enabled'} type="submit">Sumbit</button>
             </form>

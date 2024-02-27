@@ -20,6 +20,7 @@ import Contact from "./pages/Contact/Contact";
 import Services from "./pages/Services/Services";
 import About from "./pages/About/About";
 import Header from "./components/Header/Header";
+import FormRegistration from "./components/FormRegistration/FormRegistration";
 
 const App: FC = () => {
   const dispatch: TypeAppDispatch = useDispatch<TypeAppDispatch>()
@@ -29,7 +30,7 @@ const App: FC = () => {
     dispatch(fetchProducts())
   }, [])
 
-  const hidenHeaderPath: string[] = ['/contact', '/about', '/services'];
+  const hidenHeaderPath: string[] = ['/contact', '/about', '/services' , '/registration'];
   const hidenHeader: boolean = hidenHeaderPath.includes(location.pathname)
 
   return (
@@ -50,6 +51,7 @@ const App: FC = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
+          <Route path="/registration" element={<FormRegistration />} />
         </Routes>
       <Footer />
     </StyleMain>

@@ -20,7 +20,7 @@ const Global = createGlobalStyle`
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename='/internet-shop'>
       <React.StrictMode>
         <Global />
         <App />
