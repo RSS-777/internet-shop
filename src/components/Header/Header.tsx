@@ -9,6 +9,7 @@ import imgLogin from './../../assets/key.png'
 import imgUser from './../../assets/user.png'
 import imgBuy from './../../assets/buy.png'
 import Basket from "../Basket/Basket";
+import { Link } from "react-router-dom";
 
 const Header: FC = () => {
     const [theme, SetThem] = useState<string>('');
@@ -67,9 +68,9 @@ const Header: FC = () => {
                 </StyleSearch>
                 <StyleDivList>
                     <ul>
-                        <li>Login <img src={imgLogin} alt="icon login" /></li>
+                        <li><Link to='/registration'>Login<img src={imgLogin} alt="icon login" /></Link></li>
                         <li>User <img src={imgUser} alt="icon user" /></li>
-                        <li onClick={handleOpenBasket}>Basket <img src={imgBuy} alt="icon basket" /></li>
+                        <li onClick={handleOpenBasket}>Basket<img src={imgBuy} alt="icon basket" /></li>
                     </ul>
                     <StyleButtonTheme $theme={theme} onClick={handlerTheme}>{theme === 'light' ? '☼' : '☾'}</StyleButtonTheme>
                     {basketProducts.length !== 0 &&

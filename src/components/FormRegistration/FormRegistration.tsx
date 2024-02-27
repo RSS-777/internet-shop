@@ -1,0 +1,87 @@
+import { FC } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import * as Yup from 'yup';
+import { StyleContainerFotm } from "./FormRegistrationStyle";
+import { yupResolver } from "@hookform/resolvers/yup";
+import ContainerForPages from "../ContainerForPages/ContainerForPages";
+
+type TapeValue = {
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+    phoneNumber: string
+}
+
+const schema = Yup.object().shape({
+    firstName: Yup.string().required('First name is required').min(3, 'First name must be at least 3 characters'),
+    lastName: Yup.string().required('Last name is required').min(3, 'Last name must be at least 3 characters'),
+    email: Yup.string().required('Email is required').email('Please enter a valid email address'),
+    password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters'),
+    phoneNumber: Yup.string().required('Phone number is required').matches(/^[0-9]+$/, 'Phone number must contain only digits').min(10, 'Phone number must be at least 10 digits long')
+});
+
+const FormRegistration: FC = () => {
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<TapeValue>({
+        resolver: yupResolver(schema)
+    });
+
+    const onSubmit: SubmitHandler<TapeValue> = (data) => {
+        console.log(data)
+        reset()
+    };
+
+    return (
+        <ContainerForPages h2="Registration form">
+            <StyleContainerFotm onSubmit={handleSubmit(onSubmit)}>
+                <div className="block-input">
+                    <label htmlFor="name">First Name:</label>
+                    <input type="text" id="name" {...register('firstName')} />
+                </div>
+                <div className="block-error">
+                    {errors.firstName && <span>{errors.firstName.message}</span>}
+                </div>
+                <div className="block-input">
+                    <label htmlFor="last-name">Last Name:</label>
+                    <input type="text" id="last-name" {...register('lastName')} />
+                </div>
+                <div className="block-error">
+                    {errors.lastName && <span>{errors.lastName.message}</span>}
+                </div>
+                <div className="block-input">
+                    <label htmlFor="email">Email:</label>
+                    <input type="email" id="email" {...register('email')} />
+                </div>
+                <div className="block-error">
+                    {errors.email && <span>{errors.email.message}</span>}
+                </div>
+                <div className="block-input">
+                    <label htmlFor="last-name">Password:</label>
+                    <input type="password" id="password" {...register('password')} />
+                </div>
+                <div className="block-error">
+                    {errors.password && <span>{errors.password.message}</span>}
+                </div>
+                <div className="block-input">
+                    <label htmlFor="phone">Phone number:</label>
+                    <input type="tel" id="phone" {...register('phoneNumber')} />
+                </div>
+                <div className="block-error">
+                    {errors.phoneNumber && <span>{errors.phoneNumber.message}</span>}
+                </div>
+                <div className="block-radio">
+                    <fieldset>
+                        <legend>Gender:</legend>
+                        <label htmlFor="man">Man:</label>
+                        <input type="radio" id="man" value="man" name="gender" />
+                        <label htmlFor="woman">Woman:</label>
+                        <input type="radio" id="woman" value="woman" name="gender" />
+                    </fieldset>
+                </div>
+                <button>Submit</button>
+            </StyleContainerFotm>
+        </ContainerForPages>
+    )
+};
+
+export default FormRegistration;

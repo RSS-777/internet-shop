@@ -9,7 +9,6 @@ export const StyleHeaders = styled.header`
     color: blue;
     font-size: 40px;
   }
-
 `;
 
 export const StyleNav = styled.nav`
@@ -65,19 +64,29 @@ export const StyleDivList = styled.div`
     list-style: none;
 
     li {
+      position: relative;
+      align-items: center;
       box-shadow: 2px 2px 6px 1px black;
       font-size: 14px;
       margin-left: 5px;
       border-radius: 8px;
       padding: 2px 5px;
       height: 24px;
+      width: 67px;
       color: blue;
       cursor: pointer;
       background-color: #A0ABDC;
       border: 1px solid blue;
       user-select: none;
 
+      a {
+        text-decoration: none;
+        color: blue;
+      }
+
       img {
+        position: absolute;
+        right: 5px;
         width: 14px;
         height: 14px;
       }
