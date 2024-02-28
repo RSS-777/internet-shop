@@ -3,9 +3,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import * as Yup from 'yup';
 import { StyleContainerFotm } from "./FormRegistrationStyle";
 import { yupResolver } from "@hookform/resolvers/yup";
-import ContainerForPages from "../ContainerForPages/ContainerForPages";
+import ContainerForPages from "../../components/ContainerForPages/ContainerForPages";
 
-type TapeValue = {
+type TypeValue = {
     firstName: string,
     lastName: string,
     email: string,
@@ -22,11 +22,11 @@ const schema = Yup.object().shape({
 });
 
 const FormRegistration: FC = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<TapeValue>({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<TypeValue>({
         resolver: yupResolver(schema)
     });
 
-    const onSubmit: SubmitHandler<TapeValue> = (data) => {
+    const onSubmit: SubmitHandler<TypeValue> = (data) => {
         console.log(data)
         reset()
     };
@@ -72,10 +72,14 @@ const FormRegistration: FC = () => {
                 <div className="block-radio">
                     <fieldset>
                         <legend>Gender:</legend>
-                        <label htmlFor="man">Man:</label>
-                        <input type="radio" id="man" value="man" name="gender" />
-                        <label htmlFor="woman">Woman:</label>
-                        <input type="radio" id="woman" value="woman" name="gender" />
+                        <div>
+                            <label htmlFor="man">Man:</label>
+                            <input type="radio" id="man" value="man" name="gender" checked />
+                        </div>
+                        <div>
+                            <label htmlFor="woman">Woman:</label>
+                            <input type="radio" id="woman" value="woman" name="gender" />
+                        </div>
                     </fieldset>
                 </div>
                 <button>Submit</button>

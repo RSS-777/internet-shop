@@ -68,7 +68,7 @@ const Header: FC = () => {
                 </StyleSearch>
                 <StyleDivList>
                     <ul>
-                        <li><Link to='/registration'>Login<img src={imgLogin} alt="icon login" /></Link></li>
+                        <li><Link to='/login'>Sign In<img src={imgLogin} alt="icon login" /></Link></li>
                         <li>User <img src={imgUser} alt="icon user" /></li>
                         <li onClick={handleOpenBasket}>Basket<img src={imgBuy} alt="icon basket" /></li>
                     </ul>
