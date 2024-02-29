@@ -64,15 +64,17 @@ export const StyleDivList = styled.div`
     list-style: none;
 
     li {
-      position: relative;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
+      position: relative;
       box-shadow: 2px 2px 6px 1px black;
       font-size: 14px;
       margin-left: 5px;
       border-radius: 8px;
       padding: 2px 5px;
       height: 24px;
-      width: 67px;
+      width: 70px;
       color: blue;
       cursor: pointer;
       background-color: #A0ABDC;
@@ -99,6 +101,10 @@ export const StyleDivList = styled.div`
       &:hover {
         box-shadow: 1px 1px 3px 0 black;
         border: 1px solid tomato;
+      }
+
+      &.disable {
+        display: none;
       }
     }
   }
