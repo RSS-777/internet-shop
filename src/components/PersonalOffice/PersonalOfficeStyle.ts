@@ -8,6 +8,65 @@ export const ContainerStyle = styled.div<{$propsOpenPersonal: boolean}>`
   box-shadow: 2px 2px 8px 1px black;
   width: 300px;
   height: 100vh;
+  padding: 10px;
   transition: left 1s linear;
   z-index: 999;
+
+  >span {
+    position: absolute;
+    right: 20px;
+    color: white;
+  }
+
+  >h3 {
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  >h4 {
+    text-align: center;
+    color: blue;
+  }
+`;
+
+export const ContainerProductsStyle = styled.div`
+  overflow-y: scroll; 
+  padding: 10px;
+  margin-top: 10px;
+  height: 85%;
+  background-image: linear-gradient(#A0ABDC, #FFFFAD);
+  box-shadow: 2px 2px 8px 1px black;
+
+  div {
+    position: relative;
+    margin-bottom: 10px;
+    
+    h4 {
+      text-align: center;
+    }
+
+    h5 {
+      text-align: center;
+      color: #73051E;
+    }
+
+    img {
+      width: 30px;
+      margin-bottom: 10px;
+    }
+
+    span:first-of-type {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      color: red;
+      font-size: 14px;
+    }
+
+    span:last-of-type {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
 `;

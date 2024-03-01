@@ -11,7 +11,7 @@ type TypeValue = {
     lastName: string,
     email: string,
     password: string,
-    phoneNumber: string,
+    phone: string,
     gender: string;
 }
 
@@ -20,7 +20,7 @@ const schema = Yup.object().shape({
     lastName: Yup.string().required('Last name is required').min(3, 'Last name must be at least 3 characters'),
     email: Yup.string().required('Email is required').email('Please enter a valid email address'),
     password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters'),
-    phoneNumber: Yup.string().required('Phone number is required').matches(/^[0-9]+$/, 'Phone number must contain only digits').min(10, 'Phone number must be at least 10 digits long'),
+    phone: Yup.string().required('Phone number is required').matches(/^[0-9]+$/, 'Phone number must contain only digits').min(10, 'Phone number must be at least 10 digits long'),
     gender: Yup.string().required('Gender is required')
 });
 
@@ -42,7 +42,6 @@ const FormRegistration: FC = () => {
             let existingData = JSON.parse(localStorage.getItem('data') || '[]');
             existingData.push(dataFetch);
             localStorage.setItem('data', JSON.stringify(existingData));
-            console.log(dataFetch)  
             navigate('/login')
         }else{
             console.error('Failed to submit form');
@@ -82,10 +81,10 @@ const FormRegistration: FC = () => {
                 </div>
                 <div className="block-input">
                     <label htmlFor="phone">Phone number:</label>
-                    <input type="tel" id="phone" {...register('phoneNumber')} autoComplete="tel"/>
+                    <input type="tel" id="phone" {...register('phone')} autoComplete="tel"/>
                 </div>
                 <div className="block-error">
-                    {errors.phoneNumber && <span>{errors.phoneNumber.message}</span>}
+                    {errors.phone && <span>{errors.phone.message}</span>}
                 </div>
                 <div className="block-radio">
                     <fieldset>

@@ -2,7 +2,7 @@ import { FC, ForwardedRef, forwardRef } from "react";
 import { StyleContainer, StyleButtonBuy } from "./BasketStyle";
 import { useSelector, useDispatch } from "react-redux";
 import { TypeAppDispatch, TypeRootState } from "../../store/store";
-import { deleteProductFromBasket, updateProductInBasket, TypeAddBasket } from "../../store/productSlice";
+import { deleteProductFromBasket, updateProductInBasket, TypeAddBasket, deleteBasketAll, historyBasket } from "../../store/productSlice";
 
 interface BasketProps {
    propsDisable: boolean;
@@ -36,6 +36,20 @@ const Basket: FC<BasketProps> = forwardRef(({ propsDisable }, ref) => {
          dispatch(updateProductInBasket({ index, updateProduct }))
       }
    };
+   
+   const handleBuy = (): void => {
+      const newDate = new Date();
+      const dateD = newDate.getDate();
+      const monthD = newDate.getMonth();
+      const yearD = newDate.getFullYear();
+      const hourD = newDate.getHours();
+      const minutesD = newDate.getMinutes();
+      const secondD = newDate.getSeconds();
+      const date = `${String(dateD).padStart(2, '0')}-${String(monthD).padStart(2, '0')}-${yearD}, ${String(hourD).padStart(2, '0')}:${String(minutesD).padStart(2, '0')}:${String(secondD).padStart(2, '0')}`
+      const payload = [{date: date}, ...product]
+      dispatch(historyBasket(payload))
+      dispatch(deleteBasketAll())
+   };
 
    return (
       <StyleContainer $disable={propsDisable} ref={ref}>
@@ -64,7 +78,7 @@ const Basket: FC<BasketProps> = forwardRef(({ propsDisable }, ref) => {
                return acc
             }, 0)}$</span>
             </span>
-            <StyleButtonBuy disabled={product.length ? false : true}>Buy goods</StyleButtonBuy>
+            <StyleButtonBuy disabled={product.length ? false : true} onClick={() => handleBuy()}>Buy goods</StyleButtonBuy>
          </div>
       </StyleContainer>
    )

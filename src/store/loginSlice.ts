@@ -2,12 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 type TypeInitialState = {
     singIn: boolean;
-    name: string,
+    firstName: string,
+    LastName: string,
+    phone: string,
+    email: string,
 }
 
 const initialState: TypeInitialState = {
   singIn: false,
-  name: '',
+  firstName: '',
+  LastName: '',
+  phone: '',
+  email: '',
 };
 
 const loginSlice = createSlice({
@@ -18,8 +24,11 @@ const loginSlice = createSlice({
         state.singIn = action.payload
       },
       setLoginName: (state, action) => {
-        state.name = action.payload
-      }
+        state.firstName = action.payload.firstName
+        state.LastName = action.payload.lastName
+        state.email = action.payload.email
+        state.phone = action.payload.phone
+      },
    }
 });
 

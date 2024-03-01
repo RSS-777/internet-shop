@@ -33,15 +33,25 @@ const Login: FC = () => {
 
     const onSubmit: SubmitHandler<TypeValue> = (data) => {
         let existingData = JSON.parse(localStorage.getItem('data') || '[]');
+        
         if (existingData.some((item: TypeValue) => {
             return item.email === data.email && item.password === data.password
-        })) {
-            // dispatch(setLoginName(existingData.find((item: TypeValue) => {
-            //     if (item.email === data.email) {
-            //         console.log(item.name)
-            //         return item.name
-            //     }
-            // })))
+        })){
+     
+        console.log(existingData)
+            const user = existingData.find((item: TypeValue) => {
+                return item.email === data.email && item.password === data.password;
+            });
+            console.log(user)
+            if (user) {
+                dispatch(setLoginName({ 
+                    email: user.email,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    phone: user.phone
+                }));
+            }
+
             navigate('/')
             dispatch(changeSingIn(true))
             reset()

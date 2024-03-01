@@ -22,12 +22,17 @@ export type TypeAddBasket = {
     count: number,
 };
 
+export type TypeHistory =  TypeAddBasket & {
+   date?: string
+}
+
 type TInitialProduct = {
     data: TProduct[],
     status: 'idle' | 'loading' | 'succeeded' | 'faild',
     error: string | null,
     product: string,
     basket: TypeAddBasket[],
+    history: TypeHistory[]
 };
 
 export const fetchProducts = createAsyncThunk<TProduct[]>(
@@ -48,6 +53,7 @@ const initialState: TInitialProduct = {
     error: null,
     product: '',
     basket: [],
+    history: []
 }
 
 const productSlice = createSlice({
@@ -73,6 +79,15 @@ const productSlice = createSlice({
            const {index, updateProduct} = action.payload;
            state.basket[index] = updateProduct
         },
+        deleteBasketAll: (state) => {
+            state.basket = []
+        },
+        historyBasket: (state, action) => {
+            return {
+                ...state,
+                history: state.history.concat(action.payload)
+            }
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -93,7 +108,4 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
-export const { setProduct } = productSlice.actions;
-export const { addBasket } = productSlice.actions;
-export const { deleteProductFromBasket } = productSlice.actions;
-export const { updateProductInBasket } = productSlice.actions;
+export const { updateProductInBasket, deleteBasketAll, deleteProductFromBasket, historyBasket, addBasket, setProduct   } = productSlice.actions;

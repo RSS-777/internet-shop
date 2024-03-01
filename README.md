@@ -25,7 +25,7 @@
 * [X] **Redux**: Is a library for managing application state in React. We use Redux to store and manage global application state, such as the list of items in the cart and other important data.
 * [X] **EmailJS**: Is a service that allows you to send emails from your client's website without using your own server. It provides a simple API for sending emails via JavaScript, making it easy and quick to integrate email functionality into your app or website.
 ___
-<!-- [Link to the site with the *Internet-shop*](https://rss-777.github.io/internet-shop/) -->
+[Link to the site with the *Internet-shop*](https://rss-777.github.io/internet-shop/)
 
 ___
 ### Screenshot
