@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContainerStyle = styled.div<{$propsOpenPersonal: boolean}>`
   position: fixed;
   top: 0;
-  left: ${props => props.$propsOpenPersonal ? '0' : '-300px'};
+  left: ${props => props.$propsOpenPersonal ? '0' : '-320px'};
   background-color: #A0ABDC;
   box-shadow: 2px 2px 8px 1px black;
   width: 300px;
@@ -26,6 +26,32 @@ export const ContainerStyle = styled.div<{$propsOpenPersonal: boolean}>`
   >h4 {
     text-align: center;
     color: blue;
+  }
+
+  button {
+    font-size: 20px;
+    color: red;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 50px;
+    right: 15px;
+
+    &:hover {
+      color: yellow;
+    }
+  }
+
+  @media (max-width: 540px) {
+    top: 125px;
+    height: 82vh;
+  }
+
+  @media (max-width: 430px) {
+    left: ${props => props.$propsOpenPersonal ? '0' : '-110%'};
+    width: 100%;
+    top: 0;
+    height: 100vh;
   }
 `;
 

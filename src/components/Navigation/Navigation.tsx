@@ -29,7 +29,7 @@ const Navigation: FC = () => {
                     const srcImages = data.find((items) => items.category === item);
                     return (
                         <StyleLink to={item} key={index} onClick={clearProductStore}>
-                            {item}
+                            <span>{item}</span>
                             {srcImages && <img src={srcImages.thumbnail} />}
                         </StyleLink>
                     )

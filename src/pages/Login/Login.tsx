@@ -42,7 +42,7 @@ const Login: FC = () => {
             const user = existingData.find((item: TypeValue) => {
                 return item.email === data.email && item.password === data.password;
             });
-            console.log(user)
+
             if (user) {
                 dispatch(setLoginName({ 
                     email: user.email,

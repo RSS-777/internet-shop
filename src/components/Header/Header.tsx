@@ -84,6 +84,7 @@ const Header: FC = () => {
     const handlePersonalChange = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
         event.stopPropagation();
         setOpenPersonal(prev => !prev);
+        setValueDisable(false)
     };
 
     return (
@@ -112,9 +113,9 @@ const Header: FC = () => {
                 </StyleDivList>
             </StyleNav>
             <div ref={personalRef}>
-                {singIn && <PersonalOffice openPersonal={openPersonal} />}
+                {singIn && <PersonalOffice openPersonal={openPersonal} setOpenPersonal={setOpenPersonal}/>}
             </div>
-            <Basket ref={basketContainerRef} propsDisable={valueDisable} />
+            <Basket ref={basketContainerRef} propsDisable={valueDisable} setValueDisable={setValueDisable}/>
             <Navigation />
         </StyleHeaders>
     )

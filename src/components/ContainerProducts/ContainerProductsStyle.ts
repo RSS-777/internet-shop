@@ -26,6 +26,7 @@ export const StyleDiv = styled.div<TypeStyleProps>`
   ${(props) => props.$flex && `
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   `}
     gap: 5px;
     padding: 10px;
@@ -39,13 +40,15 @@ export const StyleBlockElement = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex: 1 1 180px;
+    flex: 1 1 130px;
+    max-width: 240px;
     box-shadow: 1px 1px 6px 0 black;
     border-radius: 15px;
     text-align: center;
     padding: 10px;
     cursor: pointer;
     transition: transform 0.5s ease, box-shadow 0.5s ease;
+    border: 2px solid #7284D1;
 
     h4 {
       color: blue;
@@ -66,8 +69,33 @@ export const StyleBlockElement = styled.div`
 
     &:hover {
       transform: rotateY(-25deg) rotateX(2deg);
-      border: 2px solid #7284D1;
       box-shadow: 4px 3px 6px 0 black;
+    }
+
+    @media (max-width: 540px) {
+      flex: 1 1 150px;
+      max-width: 190px;
+
+      h4 {
+         font-size: 14px;
+      }
+  
+      div {
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      flex: 1 1 200px;
+      max-width: 320px;
+
+      h4 {
+         font-size: 14px;
+      }
+  
+      div {
+        font-size: 10px;
+      }
     }
 `;
 

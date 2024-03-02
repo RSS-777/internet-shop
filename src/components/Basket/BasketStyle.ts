@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
 export const StyleContainer = styled.div<{$disable: boolean}>`
-  position: absolute;
+  position: fixed;
   z-index: 999;
   overflow-y: auto;
   top: 100px;
   right:${props => props.$disable ? '0': '-350px'};
-  max-height: 85vh;
+  max-height: 84vh;
   width: 320px;
   padding: 10px;
   border: 2px solid blue;
   border-radius: 10px 0 0 10px;
   box-shadow: 0 0 22px 0 black;
   background-color: #FDF6D3;
-  transition: right 1s ease-out;
+  transition: right 1s linear;
   user-select: none;
 
   h3 {
@@ -21,7 +21,21 @@ export const StyleContainer = styled.div<{$disable: boolean}>`
     color: blue;
   }
 
-  >div:nth-child(2) {
+  >button {
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-size: 22px;
+    position: absolute;
+    top: 5px;
+
+    &:hover {
+      color: orange;
+      text-shadow: 0 0 1px black;
+    }
+  }
+
+  >div:nth-child(3) {
    
     >div {
       position: relative;
@@ -94,7 +108,7 @@ export const StyleContainer = styled.div<{$disable: boolean}>`
     }
   }
   
-  >div:nth-child(3) {
+  >div:nth-child(4) {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -107,6 +121,19 @@ export const StyleContainer = styled.div<{$disable: boolean}>`
         color: red;
       }
     }
+  }
+
+  @media (max-width: 540px) {
+    top: 125px;
+  }
+
+  @media (max-width: 430px) {
+    top: 0;
+    right:${props => props.$disable ? '0': '-120%'};
+    height: 100vh;
+    max-height: 100vh;
+    width: 100%;
+    border-radius: 0;
   }
 `;
 

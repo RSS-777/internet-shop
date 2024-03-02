@@ -9,14 +9,23 @@ export const StyleHeaders = styled.header`
     color: blue;
     font-size: 40px;
   }
+
+  @media (max-width: 460px){
+    h1 {
+      font-size: 30px;
+    }
+  }
 `;
 
 export const StyleNav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  height: 30px;
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
   margin-top: 10px;
-  align-items: center;
+
+  @media (max-width: 460px) {
+    grid-template: 1fr 1fr /  1fr;
+    grid-gap: 20px;
+  }
 `;
 
 export const StyleSearch = styled.div`
@@ -32,13 +41,13 @@ export const StyleSearch = styled.div`
   }
 
   button {
-    background-color: #FDF6D3;
     font-size: 16px;
     padding: 2px 5px;
-    border-radius: 10px;
     margin-left: 10px;
     box-shadow: 2px 2px 6px 1px black;
+    border-radius: 10px;
     border: 1px solid black;
+    background-color: #FDF6D3;
   
     &:active {
       background-color: #FFFFAD;
@@ -50,14 +59,26 @@ export const StyleSearch = styled.div`
       border: 1px solid tomato;
     }
   }
+
+  @media (max-width: 540px) {
+    input {
+      font-size: 12px;
+      border-radius: 7px;
+    }
+  
+    button {
+      font-size: 12px;
+      border-radius: 7px;
+    }
+  }
 `;
 
 export const StyleDivList = styled.div`
-  position: relative;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  height: 30px;
+  justify-content: flex-end;
+  position: relative;
 
   ul {
     display: flex;
@@ -122,14 +143,39 @@ export const StyleDivList = styled.div`
     border-radius: 50%;
     background-color: white;
   }
+
+  @media (max-width: 540px){
+    ul {
+  
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        font-size: 12px;
+        border-radius: 7px;
+
+        margin-left: 5px;
+        padding: 3px;
+        height: 20px;
+        width: 58px;
+         
+        img {
+          right: 5px;
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+  }
 `;
 
 export const StyleButtonTheme = styled.button<{ $theme: string }>`
   background-color: ${props => props.$theme === 'light' ? '#FDF6D3' : 'gray'};
   font-size: 18px;
-  padding: 2px 5px;
   border-radius: 8px;
-  margin-left: 10px;
+  margin-left: 5px;
   border: 1px solid blue;
   width: 50px;
   height: 24px;
@@ -140,6 +186,14 @@ export const StyleButtonTheme = styled.button<{ $theme: string }>`
   &:hover {
     box-shadow: 1px 1px 3px 0 black;
     border: 1px solid tomato;
+  }
+
+  @media (max-width: 540px){
+    font-size: 14px;
+    border-radius: 7px;
+    margin-left: 5px;
+    height: 20px;
+    line-height: 16px;
   }
 `;
 

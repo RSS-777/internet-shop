@@ -103,6 +103,12 @@ export const StyleTextBlock = styled.div`
         height: 14px;
       }
     }
+
+    @media (max-width: 540px){
+      p {
+          font-size: 14px;
+      };
+    }
 `;
 
 export const StyleFlex = styled.div`
@@ -115,12 +121,22 @@ export const StyleFlex = styled.div`
 
   div {
     display: flex;
+    justify-content: center;
     box-shadow: 2px 2px 12px 1px black;
     border-radius: 20px;
     overflow: hidden;
     
     img {
       max-height: 400px;
+    }
+
+    @media (max-width: 540px){
+      flex: 1 1 150px;
+      max-width: 280px;
+      
+      img {
+        max-height: 320px;
+      }
     }
   }
 `;
@@ -166,6 +182,11 @@ export const StyleTextShowAdd = styled.div<{ $animationOnOf: boolean }>`
      font-size: 24px;
      color: blue;
      pointer-events: auto;
+
+     @media (max-width: 540px){
+      font-size: 18px;
+     }
+
    }
  `;
 

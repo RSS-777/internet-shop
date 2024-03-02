@@ -6,13 +6,15 @@ import { deleteProductFromBasket, updateProductInBasket, TypeAddBasket, deleteBa
 
 interface BasketProps {
    propsDisable: boolean;
+   setValueDisable: (disable: boolean) => void;
    ref: ForwardedRef<HTMLDivElement>;
 }
 
-const Basket: FC<BasketProps> = forwardRef(({ propsDisable }, ref) => {
+const Basket: FC<BasketProps> = forwardRef(({ propsDisable, setValueDisable }, ref) => {
    const product: TypeAddBasket[] | null = useSelector((state: TypeRootState) => state.products.basket);
+   const firstName: string = useSelector((state: TypeRootState) => state.login.firstName);
    const dispatch: TypeAppDispatch = useDispatch();
-
+   console.log(firstName)
    const handleDeleteProduct = (index: number) => {
       dispatch(deleteProductFromBasket(index))
    };
@@ -47,13 +49,16 @@ const Basket: FC<BasketProps> = forwardRef(({ propsDisable }, ref) => {
       const secondD = newDate.getSeconds();
       const date = `${String(dateD).padStart(2, '0')}-${String(monthD).padStart(2, '0')}-${yearD}, ${String(hourD).padStart(2, '0')}:${String(minutesD).padStart(2, '0')}:${String(secondD).padStart(2, '0')}`
       const payload = [{date: date}, ...product]
-      dispatch(historyBasket(payload))
+      if(firstName){
+          dispatch(historyBasket(payload))
+      }
       dispatch(deleteBasketAll())
    };
 
    return (
       <StyleContainer $disable={propsDisable} ref={ref}>
          <h3>Basket</h3>
+         <button onClick={() => setValueDisable(false)}>x</button>
          <div>
             {product?.map((item, index) => (
                <div key={index}>

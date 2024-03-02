@@ -21,8 +21,10 @@ export const StyleLink = styled(Link)`
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
-   flex: 1;
-   height: 120px;
+   text-align: center;
+   position: relative;
+   flex: 1 1 100px;
+   height: 150px;
    border: 2px solid #A1ACDC;
    cursor: pointer;
    text-decoration: none;
@@ -34,8 +36,8 @@ export const StyleLink = styled(Link)`
    transition: transform 0.5s ease, box-shadow 0.5s ease;
 
    img {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
    }
 
    &:hover {
@@ -43,4 +45,44 @@ export const StyleLink = styled(Link)`
     border: 2px solid #7284D1;
     box-shadow: 4px 3px 6px 0 black;
    }
+
+   @media (max-width: 992px){
+    height: 120px;
+    padding: 10px 5px;
+    font-size: 14px;
+ 
+      img {
+      width: 40px;
+      height: 40px;
+      }
+    }
+
+    @media (max-width: 776px){
+      height: 100px;
+      padding: 10px 2px;
+      font-size: 10px;
+      
+      img {
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    @media (max-width: 540px){
+      height: 110px;
+      font-size: 14px;
+      
+      span {
+        writing-mode: vertical-lr;
+        white-space: nowrap;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-180deg); 
+      }
+      
+      img {
+       display: none;
+      }
+    }
 `;
