@@ -69,7 +69,7 @@ export const StyleLink = styled(Link)`
     }
 
     @media (max-width: 540px){
-      height: 110px;
+      height: 125px;
       font-size: 14px;
       
       span {

@@ -58,6 +58,7 @@ export const NavStyle = styled.nav`
     
         li {
             list-style: none;
+
             a {
                 margin-right: 5px;
                 text-decoration: none;
@@ -90,6 +91,10 @@ export const BlockSocialStyle = styled.div`
         &:hover {
           box-shadow: 0 0 5px 0 black;
           border-radius: 50%;
+        }
+
+        @media (max-width: 480px) {
+          width: 20px;
         }
       }
 

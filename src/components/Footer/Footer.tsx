@@ -11,10 +11,10 @@ const Footer: FC = () => {
             <div>
                 <NavStyle>
                     <ul>
-                        <li><NavLinkStyle to="/">Головна</NavLinkStyle></li>
-                        <li><NavLinkStyle to="/about">Про нас</NavLinkStyle></li>
-                        <li><NavLinkStyle to="/services">Послуги</NavLinkStyle></li>
-                        <li><NavLinkStyle to="/contact">Контакти</NavLinkStyle></li>
+                        <li><NavLinkStyle to="/">Home</NavLinkStyle></li>
+                        <li><NavLinkStyle to="/about">About us</NavLinkStyle></li>
+                        <li><NavLinkStyle to="/services">Services</NavLinkStyle></li>
+                        <li><NavLinkStyle to="/contact">Contacts</NavLinkStyle></li>
                     </ul>
                 </NavStyle>
                 <BlockSocialStyle>
