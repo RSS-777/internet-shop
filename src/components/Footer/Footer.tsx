@@ -12,7 +12,7 @@ const Footer: FC = () => {
                 <NavStyle>
                     <ul>
                         <li><NavLinkStyle to="/">Home</NavLinkStyle></li>
-                        <li><NavLinkStyle to="/about">About us</NavLinkStyle></li>
+                        <li><NavLinkStyle to="/about">About_us</NavLinkStyle></li>
                         <li><NavLinkStyle to="/services">Services</NavLinkStyle></li>
                         <li><NavLinkStyle to="/contact">Contacts</NavLinkStyle></li>
                     </ul>
