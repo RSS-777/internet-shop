@@ -12,7 +12,7 @@ type TypePersonalOffice = {
 const PersonalOffice: FC<TypePersonalOffice> = ({ openPersonal, setOpenPersonal }) => {
   const [historyData, setHistoryData] = useState<TypeHistory[]>([]);
   const history: TypeHistory[] | null = useSelector((state: TypeRootState) => state.products.history);
-  const firstName = useSelector((state: TypeRootState) => state.login.email);
+  const firstName = useSelector((state: TypeRootState) => state.login.firstName);
   const email = useSelector((state: TypeRootState) => state.login.email);
   
   useEffect(() => {

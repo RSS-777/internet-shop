@@ -14,7 +14,6 @@ const Basket: FC<BasketProps> = forwardRef(({ propsDisable, setValueDisable }, r
    const product: TypeAddBasket[] | null = useSelector((state: TypeRootState) => state.products.basket);
    const firstName: string = useSelector((state: TypeRootState) => state.login.firstName);
    const dispatch: TypeAppDispatch = useDispatch();
-   console.log(firstName)
    const handleDeleteProduct = (index: number) => {
       dispatch(deleteProductFromBasket(index))
    };

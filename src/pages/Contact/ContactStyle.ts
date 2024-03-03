@@ -7,6 +7,7 @@ export const StyleDiv = styled.div`
   color: white;
 
   .div-list {
+    
     h4 {
        padding: 10px;
     }

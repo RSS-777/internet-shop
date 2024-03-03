@@ -38,7 +38,6 @@ const Login: FC = () => {
             return item.email === data.email && item.password === data.password
         })){
      
-        console.log(existingData)
             const user = existingData.find((item: TypeValue) => {
                 return item.email === data.email && item.password === data.password;
             });

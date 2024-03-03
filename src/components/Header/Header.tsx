@@ -2,9 +2,8 @@ import { FC, useEffect, useState, useRef } from "react";
 import Navigation from "../Navigation/Navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { TypeRootState, TypeAppDispatch } from "../../store/store";
-import { changeTheme } from "../../store/themeSlice";
 import { setProduct } from "../../store/productSlice";
-import { StyleHeaders, StyleSearch, StyleButtonTheme, StyleNav, StyleDivList } from "./HeaderStyles";
+import { StyleHeaders, StyleSearch, StyleNav, StyleDivList } from "./HeaderStyles";
 import imgLogin from './../../assets/key.png'
 import imgUser from './../../assets/user.png'
 import imgBuy from './../../assets/buy.png'
@@ -13,7 +12,6 @@ import { Link } from "react-router-dom";
 import PersonalOffice from "../PersonalOffice/PersonalOffice";
 
 const Header: FC = () => {
-    const [theme, SetThem] = useState<string>('');
     const [valueDisable, setValueDisable] = useState<boolean>(false)
     const [clickedButton, setClickedButton] = useState<boolean>(false)
     const [userLogget, setUserLogget] = useState<boolean>(false)
@@ -21,22 +19,13 @@ const Header: FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const personalRef = useRef<HTMLDivElement>(null);
     const basketContainerRef = useRef<HTMLDivElement>(null);
-    const themeValue = useSelector((state: TypeRootState) => state.theme.name);
     const basketProducts = useSelector((state: TypeRootState) => state.products.basket);
     const singIn = useSelector((state: TypeRootState) => state.login.singIn);
     const dispatch: TypeAppDispatch = useDispatch();
 
     useEffect(() => {
-        SetThem(themeValue)
-    }, [themeValue])
-
-    useEffect(() => {
         setUserLogget(singIn)
     }, [singIn])
-
-    const handlerTheme = () => {
-        dispatch(changeTheme(themeValue === 'light' ? 'dark' : 'light'))
-    }
 
     const sendValueProduct = () => {
         dispatch(setProduct(inputRef.current?.value));
@@ -99,23 +88,24 @@ const Header: FC = () => {
                     <ul>
                         <li className={userLogget ? 'disable' : ''}><Link to='/login'>Sign In<img src={imgLogin} alt="icon login" /></Link></li>
                         <li className={userLogget ? '' : 'disable'} onClick={handlePersonalChange}>User<img src={imgUser} alt="icon user" /></li>
-                        <li onClick={handleOpenBasket}>Basket<img src={imgBuy} alt="icon basket" /></li>
+                        <li onClick={handleOpenBasket}>
+                            Basket<img src={imgBuy} alt="icon basket" />
+                            {basketProducts.length !== 0 &&
+                                <span>
+                                    {basketProducts.reduce((acc, item) => {
+                                        acc += item.count
+                                        return acc
+                                    }, 0)}
+                                </span>
+                            }
+                        </li>
                     </ul>
-                    <StyleButtonTheme $theme={theme} onClick={handlerTheme}>{theme === 'light' ? '☼' : '☾'}</StyleButtonTheme>
-                    {basketProducts.length !== 0 &&
-                        <span>
-                            {basketProducts.reduce((acc, item) => {
-                                acc += item.count
-                                return acc
-                            }, 0)}
-                        </span>
-                    }
                 </StyleDivList>
             </StyleNav>
             <div ref={personalRef}>
-                {singIn && <PersonalOffice openPersonal={openPersonal} setOpenPersonal={setOpenPersonal}/>}
+                {singIn && <PersonalOffice openPersonal={openPersonal} setOpenPersonal={setOpenPersonal} />}
             </div>
-            <Basket ref={basketContainerRef} propsDisable={valueDisable} setValueDisable={setValueDisable}/>
+            <Basket ref={basketContainerRef} propsDisable={valueDisable} setValueDisable={setValueDisable} />
             <Navigation />
         </StyleHeaders>
     )

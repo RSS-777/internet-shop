@@ -33,9 +33,14 @@ export const StyleContainer = styled.div`
     .block-text {
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         label {
             color: blue;
+
+            @media (max-width: 417px) {
+              font-size: 12px;
+            }
         }
 
         input {
@@ -52,6 +57,14 @@ export const StyleContainer = styled.div`
             width: 200px;
             padding: 5px;
             box-shadow: 1px 1px 5px 0 black;
+        }
+    }
+
+    .block-text:nth-child(6) {
+
+        label {
+            align-self: flex-start;
+            margin-top: 5px;
         }
     }
 
@@ -89,6 +102,11 @@ export const StyleContainer = styled.div`
         }
     }
   }
+
+  @media (max-width: 417px) {
+    max-width: 280px;
+    margin-left: 0;
+}
 `;
 
 export const StyleSubmitMessage = styled.div<{$submitted: boolean}>`

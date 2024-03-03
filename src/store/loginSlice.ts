@@ -33,5 +33,4 @@ const loginSlice = createSlice({
 });
 
 export default loginSlice.reducer;
-export const {changeSingIn} = loginSlice.actions;
-export const {setLoginName} = loginSlice.actions;
+export const {changeSingIn, setLoginName} = loginSlice.actions;

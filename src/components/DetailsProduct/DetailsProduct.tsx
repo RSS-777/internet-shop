@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import { TProduct, addBasket } from "../../store/productSlice";
-import { useDispatch } from "react-redux";
-import { TypeAppDispatch } from "../../store/store";
-import { StyelButton, StyelContainerDetails, StyleFlex, StyleTextBlock, StyleTextShowAdd } from "./DetailsProductStyle";
+import { useDispatch, useSelector } from "react-redux";
+import { TypeAppDispatch, TypeRootState } from "../../store/store";
+import { StyelButton, StyelContainerDetails, StyleFlex, StyleTextBlock, StyleTextShowAdd, StyleButtonBuy } from "./DetailsProductStyle";
 import frames from './../../assets/frames.png';
 import imgBuy from './../../assets/buy.png';
 
@@ -21,6 +21,7 @@ interface IAddProduct {
 export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
     const dispatch: TypeAppDispatch = useDispatch();
     const [valueBoolean, setValueBoolean] = useState<boolean>(false)
+    const userEmail: string = useSelector((state: TypeRootState) => state.login.email)
 
     const handleAddBasket = () => {
         if (dataProps) {
@@ -32,7 +33,7 @@ export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
             };
             dispatch(addBasket(productToBasket))
             setValueBoolean(true)
-            setTimeout(() => {setValueBoolean(false)}, 2500)
+            setTimeout(() => { setValueBoolean(false) }, 2500)
         }
     };
 
@@ -49,7 +50,8 @@ export const DetailsProduct: FC<IDetailsProduct> = ({ dataProps, onClick }) => {
                 <p>Rating: <span>{dataProps?.rating}</span></p>
                 <p>Stock: <span>{dataProps?.stock}</span></p>
                 <p>Description: <span>{dataProps?.description}</span></p>
-                <button onClick={handleAddBasket}>Add to basket: <img src={imgBuy} alt="Icon basket" /></button>
+                <StyleButtonBuy onClick={handleAddBasket} disabled={!userEmail}>Add to basket: <img src={imgBuy} alt="Icon basket" /></StyleButtonBuy>
+                {!userEmail && <span>You need to log in to the site to buy goods</span>}
             </StyleTextBlock>
             <StyleFlex>
                 {dataProps?.images.map((item, i) =>

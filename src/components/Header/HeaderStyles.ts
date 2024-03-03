@@ -114,6 +114,20 @@ export const StyleDivList = styled.div`
         height: 14px;
       }
 
+      span {
+        position: absolute;
+        top: 17px;
+        right: 13px;
+        line-height: 14px;
+        text-align: center;
+        font-size: 8px;
+        width:14px;
+        height: 14px;
+        border: 1px solid red;
+        border-radius: 50%;
+        background-color: white;
+      }
+
       &:active {
         background-color: #FFFFAD;
          border: 1px solid blue;
@@ -128,20 +142,6 @@ export const StyleDivList = styled.div`
         display: none;
       }
     }
-  }
-
-  span {
-    position: absolute;
-    top: 20px;
-    right: 63px;
-    line-height: 14px;
-    text-align: center;
-    font-size: 8px;
-    width:14px;
-    height: 14px;
-    border: 1px solid red;
-    border-radius: 50%;
-    background-color: white;
   }
 
   @media (max-width: 540px){
@@ -166,35 +166,15 @@ export const StyleDivList = styled.div`
           width: 10px;
           height: 10px;
         }
+
+        span {
+          top: 13px;
+          right: 10px;
+        }
       }
     }
   }
 `;
 
-export const StyleButtonTheme = styled.button<{ $theme: string }>`
-  background-color: ${props => props.$theme === 'light' ? '#FDF6D3' : 'gray'};
-  font-size: 18px;
-  border-radius: 8px;
-  margin-left: 5px;
-  border: 1px solid blue;
-  width: 50px;
-  height: 24px;
-  color: red;
-  line-height: 18px;
-  box-shadow: 2px 2px 6px 1px black;
-  
-  &:hover {
-    box-shadow: 1px 1px 3px 0 black;
-    border: 1px solid tomato;
-  }
-
-  @media (max-width: 540px){
-    font-size: 14px;
-    border-radius: 7px;
-    margin-left: 5px;
-    height: 20px;
-    line-height: 16px;
-  }
-`;
 
 

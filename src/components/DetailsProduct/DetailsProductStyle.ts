@@ -63,52 +63,57 @@ export const StyelContainerDetails = styled.div`
 `;
 
 export const StyleTextBlock = styled.div`
-   width:fit-content;
-   animation: ${animationText} 2s ease;
+  width:fit-content;
+  animation: ${animationText} 2s ease;
 
-   p {
-       color: blue;
-       font-weight: bold;
-       text-shadow: 0 0 20px black;
-    };
-
-    span {
-     color: #A12C00;
-     margin-left: 5px;
-     font-family: cursive;
-    };
-
-    >button {
-      margin-top: 5px;
-      padding: 2px 5px;
-      border-radius: 6px;
+  p {
       color: blue;
-      cursor: pointer;
-      border: 1px solid blue;
-      background-color: #A0ABDC;
-      box-shadow: 2px 2px 6px 1px black;
-   
-      &:active {
-      background-color: #FFFFAD;
-       border: 1px solid blue;
-      }
+      font-weight: bold;
+      text-shadow: 0 0 20px black;
 
-      &:hover {
-       box-shadow: 1px 1px 3px 0 black;
-       border: 1px solid tomato;
+      span {
+        color: #A12C00;
+        margin-left: 5px;
+        font-family: cursive;
       }
+  }
 
-      img {
-        width: 14px;
-        height: 14px;
-      }
+  span {
+    font-size: 12px;
+    color: red;
+    margin-left: 10px;
+  }
+
+  @media (max-width: 540px){
+    p {
+        font-size: 14px;
     }
+  }
+`;
 
-    @media (max-width: 540px){
-      p {
-          font-size: 14px;
-      };
-    }
+export const StyleButtonBuy = styled.button`
+  margin-top: 5px;
+  padding: 2px 5px;
+  border-radius: 6px;
+  color: ${props => props.disabled ? 'gray' : 'blue'} ;
+  cursor: pointer;
+  border: 1px solid blue;
+  background-color: ${props => props.disabled ? '#C1C1C1' : '#A0ABDC'};
+  box-shadow: 2px 2px 6px 1px black;
+
+  &:active {
+    background-color: ${props => props.disabled ? '#C1C1C1' : '#FFFFAD'};
+  }
+
+  &:hover {
+    box-shadow: ${props => props.disabled ? '2px 2px 6px 1px black' : '1px 1px 3px 0 black'};
+    border: ${props => props.disabled ? '1px solid blue' : '1px solid tomato'};
+  }
+
+  img {
+    width: 14px;
+    height: 14px;
+  }
 `;
 
 export const StyleFlex = styled.div`
